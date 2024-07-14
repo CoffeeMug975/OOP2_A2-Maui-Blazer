@@ -1,61 +1,240 @@
-﻿@page "/weather"
+﻿@page "/calculator"
 
-<h1>Weather</h1>
+<!-- Page Title -->
+<h1 style="color: #4CAF50; font-family: Arial, sans-serif; font-weight: bold;">Blazor Calculator</h1>
+<hr style="border-color: #4CAF50;" />
 
-<p>This component demonstrates showing data.</p>
+<!-- Calculator Form -->
+<div style="margin-top: 20px;">
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    <!-- First Number Input -->
+    <div class="row">
+        <div class="col-md-3">
+            <label style="font-weight: bold;">Enter First Number</label>
+        </div>
+        <div class="col-md-4">
+            <input placeholder="Enter First Number" @bind="@firstNumber" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <!-- Second Number Input -->
+    <div class="row">
+        <div class="col-md-3">
+            <label style="font-weight: bold;">Enter Second Number</label>
+        </div>
+        <div class="col-md-4">
+            <input placeholder="Enter Second Number" @bind="@secondNumber" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <!-- Result Display -->
+    <div class="row">
+        <div class="col-md-3">
+            <label style="font-weight: bold;">Result</label>
+        </div>
+        <div class="col-md-4">
+            <input readonly @bind="@result" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <!-- Calculator Buttons -->
+    <div class="row">
+        <!-- Add Button -->
+        <div class="col-md-2">
+            <button @onclick="Add" class="btn btn-outline-success">Add (+)</button>
+        </div>
+        <!-- Subtract Button -->
+        <div class="col-md-2">
+            <button @onclick="Subtract" class="btn btn-outline-primary">Subtract (−)</button>
+        </div>
+        <!-- Multiply Button -->
+        <div class="col-md-2">
+            <button @onclick="Multiply" class="btn btn-outline-info">Multiply (X)</button>
+        </div>
+        <!-- Divide Button -->
+        <div class="col-md-2">
+            <button @onclick="Divide" class="btn btn-outline-danger">Divide (/)</button>
+        </div>
+        <!-- Square Root Button -->
+        <div class="col-md-2">
+            <button @onclick="SquareRoot" class="btn btn-outline-warning">Square Root (√)</button>
+        </div>
+        <!-- Clear Button -->
+        <div class="col-md-2">
+            <button @onclick="Clear" class="btn btn-outline-secondary">Clear All</button>
+        </div>
+    </div>
+</div>
+
 
 @code {
-    private WeatherForecast[]? forecasts;
+    // Variables to store user input and result
+    string firstNumber;
+    string secondNumber;
+    string result;
+    private bool showErrorPopup = false;
+    private string errorMessage = string.Empty;
 
-    protected override async Task OnInitializedAsync()
+    // Custom exceptions
+    public class CalculatorException : Exception
     {
-        // Simulate asynchronous loading to demonstrate a loading indicator
-        await Task.Delay(500);
+        public CalculatorException(string message) : base(message) { }
+    }
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+    public class DivisionByZeroException : CalculatorException
+    {
+        public DivisionByZeroException() : base("Error: Division by zero is not allowed.") { }
+    }
+
+    public class NegativeNumberException : CalculatorException
+    {
+        public NegativeNumberException() : base("Error: Square root of a negative number is not allowed.") { }
+    }
+
+    public class InvalidNumberException : CalculatorException
+    {
+        public InvalidNumberException(string message) : base(message) { }
+    }
+
+    public class CannotAddTwoIdenticalExeption : CalculatorException
+    {
+        public CannotAddTwoIdenticalExeption() : base("Error: Cannot add two identical numbers") { }
+    }
+
+    // Function to add two numbers
+    void Add()
+    {
+        try
         {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
+            double x = Convert.ToDouble(firstNumber);
+            double y = Convert.ToDouble(secondNumber);
+            if (x == y)
+            {
+                throw new CannotAddTwoIdenticalExeption();
+            }
+            result = ((Convert.ToDouble(firstNumber) + Convert.ToDouble(secondNumber)) + 1 - 1).ToString();
+
+            ClearInputs();
+        }
+        catch (FormatException)
+        {
+            result = "Error: Invalid input format.";
+        }
+        catch (CannotAddTwoIdenticalExeption ex)
+        {
+            result = ex.Message;
+            Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Exit", "Exit again");
+
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
     }
 
-    private class WeatherForecast
+    // Function to subtract two numbers
+    void Subtract()
     {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        try
+        {
+            result = ((Convert.ToDouble(firstNumber) - Convert.ToDouble(secondNumber)) + 1 - 1).ToString();
+            ClearInputs();
+        }
+        catch (FormatException)
+        {
+            result = "Error: Invalid input format.";
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
     }
+
+    // Function to multiply two numbers
+    void Multiply()
+    {
+        try
+        {
+            result = ((Convert.ToDouble(firstNumber) * Convert.ToDouble(secondNumber)) + 1 - 1).ToString();
+            ClearInputs();
+        }
+        catch (FormatException)
+        {
+            result = "Error: Invalid input format.";
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
+    }
+
+    // Function to divide two numbers
+    void Divide()
+    {
+        try
+        {
+            if (Convert.ToDouble(secondNumber) == 0)
+            {
+                throw new DivisionByZeroException();
+            }
+            result = ((Convert.ToDouble(firstNumber) / Convert.ToDouble(secondNumber)) + 1 - 1).ToString();
+            ClearInputs();
+        }
+        catch (FormatException)
+        {
+            result = "Error: Invalid input format.";
+        }
+        catch (DivisionByZeroException ex)
+        {
+            result = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
+    }
+
+    // Function to calculate the square root of the first number
+    void SquareRoot()
+    {
+        try
+        {
+            double number = Convert.ToDouble(firstNumber);
+            if (number < 0)
+            {
+                throw new NegativeNumberException();
+            }
+            result = (Math.Sqrt(number) + 1 - 1).ToString();
+            ClearInputs();
+        }
+        catch (FormatException)
+        {
+            result = "Error: Invalid input format.";
+        }
+        catch (NegativeNumberException ex)
+        {
+            result = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
+    }
+
+
+    // Function to clear all fields
+    void Clear()
+    {
+        firstNumber = "";
+        secondNumber = "";
+        result = "";
+    }
+
+    // Function to clear only the input fields
+    void ClearInputs()
+    {
+        firstNumber = "";
+        secondNumber = "";
+    }
+
 }

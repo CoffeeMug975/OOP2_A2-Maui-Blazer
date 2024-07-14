@@ -1,7 +1,31 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|c:\\users\\danie\\desktop\\fuckyou\\oop2_a2-maui-blazer\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|solutionrelative:components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\danie\\Desktop\\Code\\Calculator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|c:\\users\\danie\\desktop\\fuckyou\\oop2_a2-maui-blazer\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|c:\\users\\danie\\desktop\\fuckyou\\oop2_a2-maui-blazer\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Calculator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Components\\Pages\\Calculator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|c:\\users\\danie\\desktop\\fuckyou\\oop2_a2-maui-blazer\\components\\pages\\todo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC4DA9FD-F376-42D8-8596-23ED8A2212BB}|OOP2-A2.csproj|solutionrelative:components\\pages\\todo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +33,107 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Weather.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Weather.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Weather.razor",
+              "RelativeToolTip": "Components\\Pages\\Weather.razor",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAB0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T05:03:44.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Calculator.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Calculator.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Calculator.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Calculator.razor",
+              "RelativeToolTip": "Components\\Pages\\Calculator.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T05:02:17.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Todo.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Todo.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Todo.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Todo.razor",
+              "RelativeToolTip": "Components\\Pages\\Todo.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T04:54:02.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T04:53:47.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\FuckYou\\OOP2_A2-Maui-Blazer\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T04:46:40.444Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "fd35b66f-c7ab-4b89-899e-cba5b6d5cffa",
+        "Display": 2,
+        "X": 43,
+        "Y": 2,
+        "Width": 1624,
+        "Height": 784,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Calculator.razor",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\Code\\Calculator.razor",
+              "RelativeDocumentMoniker": "..\\..\\Code\\Calculator.razor",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\Code\\Calculator.razor",
+              "RelativeToolTip": "..\\..\\Code\\Calculator.razor",
+              "ViewState": "AQIAANEAAAAAAAAAAADwv/AAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-14T05:08:01.726Z",
+              "EditorCaption": ""
             }
           ]
         }

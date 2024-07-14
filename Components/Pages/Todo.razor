@@ -1,0 +1,123 @@
+﻿@page "/todo"
+
+<h1 class="mt-5">Todo List</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <!-- Input field for adding new todo items -->
+                <input type="text" class="form-control" @bind="newTodoText" placeholder="Enter a new Todo to your list:" />
+                <!-- Button to add new todo items -->
+                <button class="btn btn-primary" type="button" @onclick="AddTodo">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Todo</h2>
+            <!-- Display todo items -->
+            @foreach (var todo in todoItems)
+            {
+                <div class="form-check">
+                    <!-- Checkbox for marking todo items as done -->
+                    <input class="form-check-input" type="checkbox" @onchange="() => MoveToDone(todo)" />
+                    <!-- Label for displaying todo item text -->
+                    <label class="form-check-label">@todo.Text</label>
+                    <!-- Button for deleting todo items -->
+                    <button class="btn btn-danger btn-sm ms-2" @onclick="() => DeleteItem(todo, todoItems)">Delete</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>Done</h2>
+            <!-- Display done items -->
+            @foreach (var doneItem in doneItems)
+            {
+                <div class="form-check">
+                    <!-- Label for displaying done item text -->
+                    <label class="form-check-label">@doneItem.Text</label>
+                    <!-- Button for deleting done items -->
+                    <button class="btn btn-danger btn-sm ms-2" @onclick="() => DeleteItem(doneItem, doneItems)">Delete</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    // Definition of the TodoItem class representing each todo item
+    public class TodoItem
+    {
+        // Property to store the text of the todo item
+        public string Text { get; set; }
+        // Property to store whether the todo item is checked or not
+        public bool IsChecked { get; set; } = true;
+    }
+
+    // String variable to store the text of the new todo item
+    private string newTodoText = "";
+    // List to store todo items
+    private List<TodoItem> todoItems = new List<TodoItem>();
+    // List to store done items
+    private List<TodoItem> doneItems = new List<TodoItem>();
+
+    // Function to add new todo items
+    private void AddTodo()
+    {
+        try
+        {
+            // Check if the input field is not empty
+            if (!string.IsNullOrWhiteSpace(newTodoText))
+            {
+                if (!IsAlphanumeric(newTodoText))
+                {
+                    throw new ArgumentException("Todo item contains invalid characters(@, #, $, %).");
+                }
+                // Create a new todo item with the input text and add it to the todoItems list
+                todoItems.Add(new TodoItem { Text = newTodoText });
+                // Clear the input field after adding the todo item
+                newTodoText = "";
+            }
+        }
+        catch (ArgumentException ex)
+        {
+            // Handle invalid input
+            newTodoText = $"Error: {ex.Message}";
+            // Optionally, display an alert or log the error
+            Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private bool IsAlphanumeric(string input)
+    {
+        // Check if the input contains only alphanumeric characters (excluding @, #, $, %)
+        return input.All(char.IsLetterOrDigit) ||
+               (!input.Contains("@") && !input.Contains("#") &&
+                !input.Contains("$") && !input.Contains("%"));
+    }
+
+    // Function to move todo item to the done section
+    private void MoveToDone(TodoItem todo)
+    {
+        // Check if the todo item is checked
+        if (todo.IsChecked)
+        {
+            // Remove the todo item from the todoItems list
+            todoItems.Remove(todo);
+            // Add the todo item to the doneItems list
+            doneItems.Add(todo);
+        }
+    }
+
+    // Function to delete todo or done item
+    private void DeleteItem(TodoItem item, List<TodoItem> itemList)
+    {
+        // Remove the item from the specified list
+        itemList.Remove(item);
+    }
+}
