@@ -38,31 +38,25 @@
     </div>
     <br />
     <!-- Calculator Buttons -->
-    <div class="row">
+    <div class="row-btn-group d-flex justify-content-center">
+        
         <!-- Add Button -->
-        <div class="col-md-2">
-            <button @onclick="Add" class="btn btn-outline-success">Add (+)</button>
-        </div>
+        <button @onclick="Add" class="btn btn-outline-success">Add (➕)</button>
+        
         <!-- Subtract Button -->
-        <div class="col-md-2">
-            <button @onclick="Subtract" class="btn btn-outline-primary">Subtract (−)</button>
-        </div>
+        <button @onclick="Subtract" class="btn btn-outline-primary">Subtract (➖)</button>
+        
         <!-- Multiply Button -->
-        <div class="col-md-2">
-            <button @onclick="Multiply" class="btn btn-outline-info">Multiply (X)</button>
-        </div>
+        <button @onclick="Multiply" class="btn btn-outline-info">Multiply (✖️)</button>
+        
         <!-- Divide Button -->
-        <div class="col-md-2">
-            <button @onclick="Divide" class="btn btn-outline-danger">Divide (/)</button>
-        </div>
+        <button @onclick="Divide" class="btn btn-outline-danger">Divide (➗)</button>
+        
         <!-- Square Root Button -->
-        <div class="col-md-2">
-            <button @onclick="SquareRoot" class="btn btn-outline-warning">Square Root (√)</button>
-        </div>
+        <button @onclick="SquareRoot" class="btn btn-outline-warning">Square Root (✔)</button>
+        
         <!-- Clear Button -->
-        <div class="col-md-2">
-            <button @onclick="Clear" class="btn btn-outline-secondary">Clear All</button>
-        </div>
+        <button @onclick="Clear" class="btn btn-outline-secondary">Clear All</button>
     </div>
 </div>
 
@@ -98,10 +92,10 @@
 
     public class CannotAddTwoIdenticalExeption : CalculatorException
     {
-        public CannotAddTwoIdenticalExeption() : base("Error: Cannot add two identical numbers") { }
+        public CannotAddTwoIdenticalExeption() : base("Error: Naw Fam This no good") { }
     }
 
-    // Function to add two numbers
+    // Function to add two numbers ** Remove this later before submission **
     void Add()
     {
         try
@@ -119,11 +113,12 @@
         catch (FormatException)
         {
             result = "Error: Invalid input format.";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Please enter valid numbers", "Exit");
         }
         catch (CannotAddTwoIdenticalExeption ex)
         {
             result = ex.Message;
-            Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Exit", "Exit again");
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", ex.Message, "Exit"); // This is the pop up message
 
         }
         catch (Exception ex)
@@ -143,10 +138,12 @@
         catch (FormatException)
         {
             result = "Error: Invalid input format.";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Please enter valid numbers", "Exit");
         }
         catch (Exception ex)
         {
             result = $"Error: {ex.Message}";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
     }
 
@@ -161,10 +158,12 @@
         catch (FormatException)
         {
             result = "Error: Invalid input format.";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Please enter valid numbers", "Exit");
         }
         catch (Exception ex)
         {
             result = $"Error: {ex.Message}";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
     }
 
@@ -176,6 +175,7 @@
             if (Convert.ToDouble(secondNumber) == 0)
             {
                 throw new DivisionByZeroException();
+                Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Cannot divide by Zero.", "Exit");
             }
             result = ((Convert.ToDouble(firstNumber) / Convert.ToDouble(secondNumber)) + 1 - 1).ToString();
             ClearInputs();
@@ -183,14 +183,17 @@
         catch (FormatException)
         {
             result = "Error: Invalid input format.";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
         catch (DivisionByZeroException ex)
         {
             result = ex.Message;
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Cannot divide by Zero.", "Exit");
         }
         catch (Exception ex)
         {
             result = $"Error: {ex.Message}";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
     }
 
@@ -203,6 +206,7 @@
             if (number < 0)
             {
                 throw new NegativeNumberException();
+                Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Cannot square negitive number.", "Exit");
             }
             result = (Math.Sqrt(number) + 1 - 1).ToString();
             ClearInputs();
@@ -210,14 +214,17 @@
         catch (FormatException)
         {
             result = "Error: Invalid input format.";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
         catch (NegativeNumberException ex)
         {
             result = ex.Message;
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Cannot square negitive number.", "Exit");
         }
         catch (Exception ex)
         {
             result = $"Error: {ex.Message}";
+            Application.Current.MainPage.DisplayAlert("Invalid Operation !", "Error: Invalid input format.", "Exit");
         }
     }
 

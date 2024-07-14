@@ -30,7 +30,7 @@
     <AppXManifest Include="C:\Users\danie\Desktop\FuckYou\OOP2_A2-Maui-Blazer\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-07-14T05:10:33.437</Modified>
+      <Modified>2024-07-14T19:44:00.034</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\danie\Desktop\FuckYou\OOP2_A2-Maui-Blazer\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\OOP2-A2.dll">
       <PackagePath>OOP2-A2.dll</PackagePath>
-      <Modified>2024-07-14T05:10:19.936</Modified>
+      <Modified>2024-07-14T19:43:59.700</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\danie\Desktop\FuckYou\OOP2_A2-Maui-Blazer\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>OOP2-A2.exe</PackagePath>
-      <Modified>2024-07-14T05:10:20.051</Modified>
+      <Modified>2024-07-14T19:43:59.743</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\danie\Desktop\FuckYou\OOP2_A2-Maui-Blazer\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
